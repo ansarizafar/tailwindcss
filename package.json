@@ -1,0 +1,24 @@
+{
+  "name": "un-css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "./node_modules/.bin/tailwind init",
+    "process": "./node_modules/.bin/tailwind build tailwind.css -c ./tailwind.js -o ./devstyles.css",
+    "optimize": "node uncss.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "clean-css": "^4.1.11",
+    "poi-preset-svelte": "^9.0.1",
+    "postcss-import": "^11.1.0",
+    "tailwindcss": "^0.5.1",
+    "uncss": "^0.16.2"
+  },
+  "dependencies": {
+    "svelte-transitions": "^1.1.1"
+  }
+}

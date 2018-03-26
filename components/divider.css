@@ -1,0 +1,28 @@
+.ui.divider {
+    @apply .border .border-grey-lighter .mt-3 .mb-4
+}
+
+.ui.wide.divider {
+    @apply .border-2
+}
+
+.ui.green.divider {
+    @apply .border-green-lightest
+}
+.ui.dark.green.divider {
+    @apply .border-green-light
+}
+
+.ui.red.divider {
+    @apply .border-red-lighter
+}
+.ui.dark.red.divider {
+    @apply .border-red-light
+}
+
+.ui.blue.divider {
+    @apply .border-blue-lighter
+}
+.ui.dark.blue.divider {
+    @apply .border-blue-light
+}

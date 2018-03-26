@@ -1,0 +1,54 @@
+.ui.menu {
+    @apply .flex;
+}
+
+.ui.menu.verticle {
+    @apply .flex-col
+}
+.ui.menu.center {
+    @apply .justify-center;
+}
+
+.ui.menu.left {
+    @apply .justify-start;
+}
+
+.ui.menu.right {
+    @apply .justify-end;
+}
+
+.ui.menu .item {
+    @apply .no-underline text-grey-dark .border-b-2 .border-transparent .uppercase .tracking-wide .text-xs .py-3 .mr-8
+}
+
+.ui.menu.verticle .item {
+    @apply .border-r-2 .border-b-0
+}
+.ui.menu .item.active {
+    @apply .text-black .border-black
+}
+
+.ui.menu .item:hover {
+    @apply .text-black .border-black
+}
+.ui.menu .item.blue.active {
+    @apply .text-blue-dark .border-blue-dark
+}
+
+.ui.menu .item.blue:hover {
+    @apply .text-blue-dark .border-blue-dark
+}
+.ui.menu .item.red.active {
+    @apply .text-red-dark .border-red-dark
+}
+
+.ui.menu .item.red:hover {
+    @apply .text-red-dark .border-red-dark
+}
+.ui.menu .item.green.active {
+    @apply .text-green-dark .border-green-dark
+}
+
+.ui.menu .item.green:hover {
+    @apply .text-green-dark .border-green-dark
+}
