@@ -41,6 +41,7 @@
 @import "components/divider.css";
 @import "components/list.css";
 @import "components/menu.css";
+@import "components/switch.css";
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

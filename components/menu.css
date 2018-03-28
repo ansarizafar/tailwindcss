@@ -1,10 +1,60 @@
 .ui.menu {
-    @apply .flex;
+    @apply .flex .flex-col;
+}
+
+@screen lg {
+    .ui.menu {
+        flex-direction: row;
+        display: flex !important;
+    }
+    .ui.menu .item:hover {
+        border-bottom-width: 2px;
+        border-bottom: solid;
+    }
+    .ui.menu .item.active {
+        border-bottom-width: 2px;
+        border-bottom: solid;
+    }
+    .ui.menu .item {
+        display: inline-block !important;
+    }
+    .ui.menu .icon {
+        display: none !important;
+    }
+}
+
+/*
+    @screen sm {
+    .ui.menu {
+        display: none;
+    }
+    .ui.menu .item {
+        border: none; 
+            }
+ 
+}
+*/
+
+.ui.menu .icon {
+    @apply .block .float-right .px-6;
+}
+
+.ui.menu .icon:hover {
+    @apply .text-grey-dark;
+}
+
+.ui.menu .icon:active {
+    @apple .block;
+}
+
+.ui.menu .icon>svg {
+    @apply .fill-current .w-4 .h-4 .cursor-pointer .text-grey;
 }
 
 .ui.menu.verticle {
     @apply .flex-col
 }
+
 .ui.menu.center {
     @apply .justify-center;
 }
@@ -18,12 +68,13 @@
 }
 
 .ui.menu .item {
-    @apply .no-underline text-grey-dark .border-b-2 .border-transparent .uppercase .tracking-wide .text-xs .py-3 .mr-8
+    @apply .hidden .no-underline text-grey-dark .border-b-2 .border-transparent .uppercase .tracking-wide .text-xs .py-3 .mr-8
 }
 
 .ui.menu.verticle .item {
     @apply .border-r-2 .border-b-0
 }
+
 .ui.menu .item.active {
     @apply .text-black .border-black
 }
@@ -31,6 +82,7 @@
 .ui.menu .item:hover {
     @apply .text-black .border-black
 }
+
 .ui.menu .item.blue.active {
     @apply .text-blue-dark .border-blue-dark
 }
@@ -38,6 +90,7 @@
 .ui.menu .item.blue:hover {
     @apply .text-blue-dark .border-blue-dark
 }
+
 .ui.menu .item.red.active {
     @apply .text-red-dark .border-red-dark
 }
@@ -45,6 +98,7 @@
 .ui.menu .item.red:hover {
     @apply .text-red-dark .border-red-dark
 }
+
 .ui.menu .item.green.active {
     @apply .text-green-dark .border-green-dark
 }

@@ -1,5 +1,5 @@
 .ui.list {
-    @apply .bg-grey-lighter .flex-1 .overflow-auto
+    @apply .bg-grey-lighter .flex-row .overflow-auto
 }
 .ui.list .item {
     @apply .bg-white .px-3 .flex .items-center .cursor-pointer
@@ -14,7 +14,7 @@
 }
 
 .ui.list .item .content .header {
-    @apply .text-grey-darkest
+    @apply .text-grey-darkest 
 }
 
 .ui.list .item .content .subheader {
