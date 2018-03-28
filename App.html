@@ -39,12 +39,12 @@
                 Next
             </button>
         </div>
-        <div class="ui blue small button">
+        <button class="ui blue small button">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
             </svg>
             Download
-        </div>
+        </button>
     </div>
     <div class="ui divider"></div>
     <Alert ref:alert type="warning" title='Warning' message="Something is wrong" timeout="3000"></Alert>
@@ -131,11 +131,21 @@
     </div>
 
 
-    <form novalidat>
-        <input bind:value='name.value' on:input='validate(event)' class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-            id="name" type="text" placeholder="Name" />
-        <div class="text-red text-sm">{{name.error}}</div>
-        <button class="ui red small button" type="submit">Submit</button>
+    <form novalidat='true' ref:form>
+        <div class="field w-64">
+            <label for="name">Name</label>
+            <input bind:value='form.name.value' name="form.name" on:input='validate(event)' class="input" type="text" placeholder="Name"
+            />
+            <div class="error">{{form.name.error}}</div>
+        </div>
+        <div class="field w-64">
+                <select class="input">
+                        <option value="" disabled selected>Select your option</option>
+                    <option value='1'>Karachi</option>
+                    <option value='2'>Hyderabad</option>
+                </select>
+        </div>
+        <button class="ui green rounded small button" on:click='submit(event)'>Submit</button>
     </form>
 </div>
 
@@ -155,12 +165,21 @@
         },
         data() {
             return {
-                name: {
-                    value: 'Zafar Ansari',
-                    rules: {
-                        required: (value) => {return value ? {isValid: true} : {isValid: false, error: 'Value required'}}
-                    },
-                    error: ''
+                form: {
+                    name: {
+                        value: 'Zafar Ansari',
+                        rules: {
+                            required: (value) => {
+                                return value ? {
+                                    isValid: true
+                                } : {
+                                    isValid: false,
+                                    error: 'Value required'
+                                }
+                            }
+                        },
+                        error: ''
+                    }
                 },
                 cities: [{
                     value: 1,
@@ -172,27 +191,33 @@
             }
         },
 
-        oncreate() {console.log(this)},
+        oncreate() {
+            
+        },
         methods: {
+            isFormValid(form) {
+                for (let field of form.elements) {
+                    if (!field.checkValidity()) {
+                        return false
+                    }
+                }
+                return true
+            },
             validate(event) {
-                let schema = this.get(event.target.id)
-                
+
+                let schema = event.target.name.split('.').reduce((o, i) => o[i], this.get())
                 if (schema.rules) {
-
                     Object.values(schema.rules).forEach(async (rule) => {
-                       const result = await rule(schema.value)
-                     
-                       if (result.isValid === false) {
-                        
-//schema.error = result.error
-                        console.log(schema) 
-                        console.log(this)
-                        this.set(schema)
-                           
+                        const result = await rule(schema.value)
+                        if (result.isValid) {
+                            schema.error = ''
+                            event.target.setCustomValidity('')
+                        } else {
+                            schema.error = result.error
+                            event.target.setCustomValidity(result.error)
                         }
+                        this.set(this.get())
                     })
-
-
                 }
             },
             ongender(event) {
@@ -207,8 +232,9 @@
             onModalClose() {
                 console.log('Modal closed')
             },
-            showForm() {
-                this.refs.testForm.validate()
+            submit(event) {
+                event.preventDefault();
+                console.log(this.isFormValid(this.refs.form))
             }
         }
     }

@@ -42,6 +42,7 @@
 @import "components/list.css";
 @import "components/menu.css";
 @import "components/switch.css";
+@import "components/form.css";
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

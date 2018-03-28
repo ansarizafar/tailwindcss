@@ -1,0 +1,20 @@
+.field {
+    @apply .m-2
+}
+.field label {
+    @apply .py-3 .px-1 .text-grey-darker
+}
+.input {
+    @apply .shadow .appearance-none .border .rounded .w-full .py-2 .px-3 .bg-white .text-grey-darker
+}
+
+.error {
+    @apply .text-red .text-sm .text-center .pt-1
+}
+input:invalid {
+     @apply .border .border-red-lighter .bg-red-lightest;
+  }
+  
+ select:focus, input:focus, input:focus:invalid {
+    outline: none;
+  }
