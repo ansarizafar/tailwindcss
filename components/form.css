@@ -11,7 +11,7 @@
 .error {
     @apply .text-red .text-sm .text-center .pt-1
 }
-input:invalid {
+select:invalid, input:invalid {
      @apply .border .border-red-lighter .bg-red-lightest;
   }
   

@@ -19,6 +19,7 @@
     "uncss": "^0.16.2"
   },
   "dependencies": {
+    "indicative": "^5.0.5",
     "svelte-transitions": "^1.1.1"
   }
 }
