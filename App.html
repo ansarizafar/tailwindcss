@@ -1,6 +1,7 @@
 <:Head>
     <title>Tailwindcss</title>
 </:Head>
+
 <div class="container py-4 px-4 lg:px-0 md:px-0 mx-auto">
     <div class="ui center menu">
         <div class="icon">
@@ -25,14 +26,14 @@
     <h1 class="text-2xl font-bold">Buttons</h1>
     <div class="ui red divider"></div>
     <div class="flex justify-around flex-wrap">
-        <button on:click='showAlert()' class="ui outline rounded-full blue shadow small button">
+        <button   on:click='showAlert()' class="ui outline rounded-full blue shadow small button">
             Show Alert
         </button>
         <button on:click='showModal()' class="ui green outline shadow-inner rounded small button ml-4">
             Show Modal
         </button>
         <div class="inline-flex">
-            <button class="ui red small button rounded-l">
+            <button data-tooltip="Add users to your feed" data-inverted="" class="ui red small button rounded-l">
                 Prev
             </button>
             <button class="ui small button red rounded-r">
@@ -134,7 +135,7 @@
     <form ref:userForm>
         <div class="field w-64">
             <label for="name">Name</label>
-            <input use:validator bind:value='name' name="name" data-rules="required" on:input="check(event)" class="input" type="text" placeholder="Name">
+            <input use:validator bind:value='name' name="name" data-rules="required|min:5" class="input" type="text" placeholder="Name">
             <div class="error"></div>
         </div>
         <div class="field w-64">
@@ -147,13 +148,22 @@
         </div>
         <button class="ui green rounded small button" type="submit" on:click='submit(event)'>Submit</button>
     </form>
-</div>
+    
 
+    <Dropdown items='{{cities}}'></Dropdown>
+
+</div>
+<!--
+<Progressbar ref:pbar color="blue"></Progressbar>
+-->
 <script>
     import Alert from './components/Alert'
     import Modal from './components/Modal'
     import Choose from './components/Choose'
     import Switch from './components/Switch'
+    import Progressbar from './components/Progressbar'
+    import Dropdown from './components/Dropdown'
+
 
     import validator from './actions/validator'
 
@@ -162,7 +172,10 @@
             Alert,
             Modal,
             Choose,
-            Switch
+            Switch,
+        //    Progressbar,
+            Dropdown
+
 
         },
         actions: {
@@ -182,7 +195,8 @@
         },
 
         oncreate() {
-
+            
+//this.refs.pbar.start()
         },
         methods: {
             check(event) {

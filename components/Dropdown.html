@@ -1,0 +1,74 @@
+
+<div  tabindex="0" class="relative inline-block cursor-pointer w-64	"  >
+    <button on:click='toggleOpen(event)' on:blur='close(event)' class="w-full appearance-none p-2 rounded flex items-center justify-between bg-white border border-grey-light hover:border-{{
+        color}}">
+        <span class="pr-2 text-grey-dark">
+            {{selectedItem ? selectedItem : placeholder}}
+        </span>
+
+        <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+        </svg>
+    </button>
+    {{#if open }}
+    <div transition:fade>
+        <div class="absolute border border-grey-light bg-white rounded z-10 min-w-full">
+            <ul class="list-reset">
+                {{#each items as item}}
+                <span>
+                              <li on:click="onSelect(event)" id="{{item.value}}" class="p-3 text-grey-dark hover:bg-{{color}}-light hover:text-white">
+                        <span class="no-underline text-md ">
+                            {{item.label}}
+                        </span>
+                    </li>
+                    {{#if item.hasSeparator}}
+                    <li>
+                        <hr class="border-b" />
+                    </li>
+                    {{/if}}
+                </span>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+<script>
+      import { fade } from 'svelte-transitions';
+    export default {
+        transitions: { fade },
+        data() {
+            return {
+                items: [],
+                placeholder: 'Select option',
+                color: 'blue',
+                open: false,
+                selectedItem: null,
+                selectedValue: null
+            }
+        },
+        methods: {
+    toggleOpen() {
+        event.preventDefault();
+      this.set({open :!this.get("open")});
+    },
+    close(event) {
+             this.set({open: false});
+    },
+    onSelect(event) {
+        event.preventDefault();
+      this.set({selectedValue : event.target.id})
+      this.set({selectedItem : event.target.innerText})
+      this.fire('selected',this.selectedValue)
+         }
+  },
+
+    }
+</script>
+
+<style>
+select:focus, select:focus:invalid {
+    outline: none;
+  }
+</style>
