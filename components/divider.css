@@ -1,28 +1,28 @@
-.ui.divider {
-    @apply .border .border-grey-lighter .mt-3 .mb-4
+.divider {
+    @apply border border-grey-lighter mt-3 mb-4;
 }
 
-.ui.wide.divider {
-    @apply .border-2
+.divider.wide {
+    @apply border-2;
 }
 
-.ui.green.divider {
-    @apply .border-green-lightest
+.divider.green {
+    @apply border-green-lightest;
 }
-.ui.dark.green.divider {
-    @apply .border-green-light
+.divider.dark.green {
+    @apply border-green-light;
 }
 
-.ui.red.divider {
+.divider.red {
     @apply .border-red-lighter
 }
-.ui.dark.red.divider {
-    @apply .border-red-light
+.divider.dark.red {
+    @apply border-red-light;
 }
 
-.ui.blue.divider {
-    @apply .border-blue-lighter
+.divider.blue {
+    @apply border-blue-lighter;
 }
-.ui.dark.blue.divider {
-    @apply .border-blue-light
+.divider.dark.blue {
+    @apply border-blue-light;
 }

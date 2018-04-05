@@ -1,6 +1,6 @@
 
-<div  tabindex="0" class="relative inline-block cursor-pointer w-64	"  >
-    <button on:click='toggleOpen(event)' on:blur='close(event)' class="w-full appearance-none p-2 rounded flex items-center justify-between bg-white border border-grey-light hover:border-{{
+<div  tabindex="0" class="relative inline-block cursor-pointer w-64 shadow	"  >
+    <button on:click='toggleOpen(event)' on:blur='close(event)' class="w-full appearance-none pt-2 pb-2 pl-4 pr-4 rounded flex items-center justify-between bg-white border border-grey-light hover:bg-transparent hover:border-{{
         color}}">
         <span class="pr-2 text-grey-dark">
             {{selectedItem ? selectedItem : placeholder}}
@@ -12,7 +12,7 @@
     </button>
     {{#if open }}
     <div transition:fade>
-        <div class="absolute border border-grey-light bg-white rounded z-10 min-w-full">
+        <div class="absolute border border-grey-light bg-white rounded z-10 min-w-full shadow">
             <ul class="list-reset">
                 {{#each items as item}}
                 <span>

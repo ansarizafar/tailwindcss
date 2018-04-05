@@ -1,0 +1,49 @@
+/*Attribute targeting*/
+/* target all zip files, case insensitive*/
+a[href$=".zip" i] { }
+/* make google.com links red*/
+[href*="google.com"] { color: red; }
+
+/*Multiple backgrounds*/
+background: url(example1.png’) no-repeat center 50px, url(‘example2.jpg’) no-repeat bottom top;
+
+/*Styling of the url hash (/#foo) targeted elements*/
+/*<a href=”#foo”>Go to Foo</a>*/
+#foo:target { color: red; }
+
+/*Open and close quote-marks*/
+q:before {
+    content: open-quote;
+   }
+   q:after {
+    content: close-quote;
+   }
+   html[lang=”fr”] q {
+    Quotes: “«” “»”;
+   }
+
+   /*@supports for checking browser support*/
+   @supports (display: flex) {
+    div {
+      display: flex;
+    }
+   }
+
+
+   li + li {
+    margin-top: 1rem;
+   }
+   // vs
+   li {
+    margin-bottom: 1rem;
+   }
+   li:last-of-type {
+     margin-bottom: 0;
+   }
+
+   /*Truncate text with an ellipsis “…” ending*/
+   p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }

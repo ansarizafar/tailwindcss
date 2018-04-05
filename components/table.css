@@ -1,0 +1,39 @@
+table {
+  @apply w-full border rounded mt-4;
+}
+
+table.indigo {
+@apply border-indigo
+}
+
+table thead {
+  @apply flex w-full bg-grey-light;
+}
+
+table thead.indigo {
+    @apply bg-indigo-light text-white;
+}
+
+table thead tr {
+  @apply flex w-full;
+}
+
+table thead th {
+  @apply p-3;
+}
+
+table tbody tr {
+  @apply flex w-full;
+}
+
+table tbody tr:hover {
+  @apply bg-grey-lighter
+}
+
+table td {
+  @apply p-3;
+}
+
+table tbody {
+  @apply flex flex-col items-center justify-between overflow-y-scroll w-full;
+}

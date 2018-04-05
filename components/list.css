@@ -1,30 +1,30 @@
-.ui.list {
-    @apply .bg-grey-lighter .flex-row .overflow-auto
+ul {
+    @apply bg-grey-lighter flex-row overflow-auto list-reset;
 }
-.ui.list .item {
-    @apply .bg-white .px-3 .flex .items-center .cursor-pointer
-}
-
-.ui.list .item .image {
-    @apply .h-12 .w-12 .rounded-full
+ul li {
+    @apply bg-white px-3 flex items-center cursor-pointer;
 }
 
-.ui.list .item .content {
-    @apply .ml-4 .flex-1 .border-b .border-grey-lighter .py-4
+ul li .image {
+    @apply h-12 w-12 rounded-full;
 }
 
-.ui.list .item .content .header {
-    @apply .text-grey-darkest 
+ul li .content {
+    @apply ml-4 flex-1 border-b border-grey-lighter py-4;
 }
 
-.ui.list .item .content .subheader {
-    @apply .text-grey-dark .mt-1 .text-sm
+ul li .content .header {
+    @apply text-grey-darkest; 
 }
 
-.ui.list .item:hover {
-@apply .bg-grey-lighter
+ul li .content .subheader {
+    @apply text-grey-dark mt-1 text-sm;
 }
 
-.ui.list .item.active {
-    @apply .bg-grey-light
+ul li:hover {
+@apply bg-grey-lighter;
+}
+
+ul li.active {
+    @apply bg-grey-light;
 }

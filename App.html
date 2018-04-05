@@ -1,224 +1,241 @@
 <:Head>
-    <title>Tailwindcss</title>
+  <title>Tailwindcss</title>
 </:Head>
 
 <div class="container py-4 px-4 lg:px-0 md:px-0 mx-auto">
-    <div class="ui center menu">
-        <div class="icon">
-            <svg class="icon" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-            </svg>
-        </div>
-        <a class="blue item" href="/">
-            Home
-        </a>
-        <a class="red item" href="/">
-            Products
-        </a>
-        <a class="green item active" href="/">
-            Discounts
-        </a>
-        <a class="item" href="/">
-            Customers
-        </a>
+  <div class="ui center menu">
+    <div class="icon">
+      <svg class="icon" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
     </div>
+    <a class="blue item" href="/">
+      Home
+    </a>
+    <a class="red item" href="/">
+      Products
+    </a>
+    <a class="green item active" href="/">
+      Discounts
+    </a>
+    <a class="item" href="/">
+      Customers
+    </a>
+  </div>
 
-    <h1 class="text-2xl font-bold">Buttons</h1>
-    <div class="ui red divider"></div>
-    <div class="flex justify-around flex-wrap">
-        <button   on:click='showAlert()' class="ui outline rounded-full blue shadow small button">
-            Show Alert
-        </button>
-        <button on:click='showModal()' class="ui green outline shadow-inner rounded small button ml-4">
-            Show Modal
-        </button>
-        <div class="inline-flex">
-            <button data-tooltip="Add users to your feed" data-inverted="" class="ui red small button rounded-l">
-                Prev
-            </button>
-            <button class="ui small button red rounded-r">
-                Next
-            </button>
-        </div>
-        <button class="ui blue small button">
-            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-            </svg>
-            Download
-        </button>
+  <h1 class="text-2xl font-bold">Buttons</h1>
+  <div class="red divider"></div>
+  <div class="flex justify-around flex-wrap">
+    <button on:click='showAlert()' class="outline rounded-full blue shadow small">
+      Show Alert
+    </button>
+    <button on:click='showModal()' class="green outline shadow-inner rounded small ml-4">
+      Show Modal
+    </button>
+    <div class="inline-flex">
+      <button data-tooltip="Add users to your feed" data-position="bottom center" data-inverted="" class="red small rounded-l">
+        Prev
+      </button>
+      <button class="small red rounded-r">
+        Next
+      </button>
     </div>
-    <div class="ui divider"></div>
-    <Alert ref:alert type="warning" title='Warning' message="Something is wrong" timeout="3000"></Alert>
-    <Modal ref:modal title='Heading' on:close='onModalClose()'>
-        <div slot='contents'>Here are the details</div>
-        <div slot='footer'>
-            <button class="ui red small button rounded-full ">Close</button>
-        </div>
-    </Modal>
-
-    <div class="text-center">
-        <svg width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"
-            class="lds-ripple" style="background: none;">
-            <circle cx="50" cy="50" r="35.584" fill="none" stroke="#fcb711" stroke-width="2">
-                <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="-0.5s"
-                    repeatCount="indefinite"></animate>
-                <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="-0.5s"
-                    repeatCount="indefinite"></animate>
-            </circle>
-            <circle cx="50" cy="50" r="17.0532" fill="none" stroke="#f37021" stroke-width="2">
-                <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate>
-                <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="0s"
-                    repeatCount="indefinite"></animate>
-            </circle>
-        </svg>
+    <button class="blue small">
+      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+      </svg>
+      Download
+    </button>
+    <button class="small">Default</button>
+  </div>
+  <div class="red divider shadow"></div>
+  <Alert ref:alert type="warning" title='Warning' message="Something is wrong"></Alert>
+  <Modal ref:modal title='Heading' on:close='onModalClose()'>
+    <div slot='contents'>Here are the details</div>
+    <div slot='footer'>
+      <button class="ui red small button rounded-full ">Close</button>
     </div>
+  </Modal>
+
+  <div class="text-center">
+    <svg width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"
+      class="lds-ripple" style="background: none;">
+      <circle cx="50" cy="50" r="35.584" fill="none" stroke="#fcb711" stroke-width="2">
+        <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="-0.5s"
+          repeatCount="indefinite"></animate>
+        <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="-0.5s"
+          repeatCount="indefinite"></animate>
+      </circle>
+      <circle cx="50" cy="50" r="17.0532" fill="none" stroke="#f37021" stroke-width="2">
+        <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="1" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+        <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1" keySplines="0.2 0 0.8 1" begin="0s"
+          repeatCount="indefinite"></animate>
+      </circle>
+    </svg>
+  </div>
 
 
-    <!-- List -->
-    <h1 class="text-2xl font-bold">List</h1>
-    <div class="ui red divider"></div>
-    <div class="ui list sm:w-full lg:w-1/2">
-        <div class="item">
+  <!-- List -->
+  <h1 class="text-2xl font-bold">List</h1>
+  <div class="red divider"></div>
 
-            <img class="image" alt="abc" src="https://darrenjameseeley.files.wordpress.com/2014/09/expendables3.jpeg">
+  <ul class="sm:w-full lg:w-1/2">
+    <li>
+      <img class="image" alt="abc" src="https://darrenjameseeley.files.wordpress.com/2014/09/expendables3.jpeg">
 
-            <div class="content">
-                <div class="header">
-                    <p>
-                        New Movie! Expendables 4
-                    </p>
-                </div>
-
-
-                <div class="subheader">
-                    Get Andrés on this movie ASAP!
-
-                </div>
-                <p class="text-xs float-right">
-                    12:45 pm
-                </p>
-            </div>
-        </div>
-        <div class="item">
-
-            <img class="image" alt="abc" src="https://www.biography.com/.image/t_share/MTE5NDg0MDU1MTIyMTE4MTU5/arnold-schwarzenegger-9476355-1-402.jpg">
-
-            <div class="content">
-                <div class="header">
-                    <p>
-                        Arnold Schwarzenegger
-                    </p>
-
-                </div>
-                <p class="text-xs float-right">
-                    12:45 pm
-                </p>
-                <div class="subheader">
-                    I'll be back
-                </div>
-            </div>
+      <div class="content">
+        <div class="header">
+          <p>
+            New Movie! Expendables 4
+          </p>
         </div>
 
+
+        <div class="subheader">
+          Get Andrés on this movie ASAP!
+
+        </div>
+        <p class="text-xs float-right">
+          12:45 pm
+        </p>
+      </div>
+    </li>
+    <li>
+      <img class="image" alt="abc" src="https://www.biography.com/.image/t_share/MTE5NDg0MDU1MTIyMTE4MTU5/arnold-schwarzenegger-9476355-1-402.jpg">
+
+      <div class="content">
+        <div class="header">
+          <p>
+            Arnold Schwarzenegger
+          </p>
+
+        </div>
+        <p class="text-xs float-right">
+          12:45 pm
+        </p>
+        <div class="subheader">
+          I'll be back
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="flex justify-around flex-wrap">
+    <!-- Switch -->
+    <Switch type='radio' color="red" name='gender' value='Male' on:change='ongender(event)' checked='true'></Switch>
+    <Switch type='radio' color="yellow" name='gender' value='Female' on:change='ongender(event)'></Switch>
+
+    <Choose width='w-64' selected="2" name="city" list='{{cities}}'>
+
+    </Choose>
+  </div>
+
+
+  <form ref:userForm>
+    <div class="field w-64">
+      <label for="name">Name</label>
+      <input use:validator bind:value='name' name="name" data-rules="required|min:5" class="input" type="text" placeholder="Name">
+      <div class="error"></div>
     </div>
-
-    <div class="flex justify-around flex-wrap">
-        <!-- Switch -->
-        <Switch type='radio' color="red" name='gender' value='Male' on:change='ongender(event)' checked='true'></Switch>
-        <Switch type='radio' color="yellow" name='gender' value='Female' on:change='ongender(event)'></Switch>
-
-        <Choose width='w-64' selected="2" name="city" list='{{cities}}'>
-
-        </Choose>
+    <div class="field w-64">
+      <select class="input" use:validator name="gender" data-rules="required">
+        <option value="" disabled selected>Select your option</option>
+        <option value='1'>Karachi</option>
+        <option value='2'>Hyderabad</option>
+      </select>
+      <div class="error"></div>
     </div>
+    <button class="ui blue rounded small button shadow mb-6" type="submit" on:click='submit(event)'>Submit</button>
+  </form>
 
 
-    <form ref:userForm>
-        <div class="field w-64">
-            <label for="name">Name</label>
-            <input use:validator bind:value='name' name="name" data-rules="required|min:5" class="input" type="text" placeholder="Name">
-            <div class="error"></div>
-        </div>
-        <div class="field w-64">
-            <select class="input" use:validator name="gender" data-rules="required">
-                <option value="" disabled selected>Select your option</option>
-                <option value='1'>Karachi</option>
-                <option value='2'>Hyderabad</option>
-            </select>
-            <div class="error"></div>
-        </div>
-        <button class="ui green rounded small button" type="submit" on:click='submit(event)'>Submit</button>
-    </form>
-    
+  <Dropdown items='{{cities}}'></Dropdown>
 
-    <Dropdown items='{{cities}}'></Dropdown>
+  <table class="indigo">
+    <thead class="indigo">
+      <tr>
+        <th>One</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dogs</td>
+      </tr>
+      <tr>
+        <td>Cats</td>
+      </tr>
+    </tbody>
+
+  </table>
 
 </div>
 <!--
 <Progressbar ref:pbar color="blue"></Progressbar>
 -->
 <script>
-    import Alert from './components/Alert'
-    import Modal from './components/Modal'
-    import Choose from './components/Choose'
-    import Switch from './components/Switch'
-    import Progressbar from './components/Progressbar'
-    import Dropdown from './components/Dropdown'
+  import Alert from './components/Alert'
+  import Modal from './components/Modal'
+  import Choose from './components/Choose'
+  import Switch from './components/Switch'
+  import Progressbar from './components/Progressbar'
+  import Dropdown from './components/Dropdown'
 
 
-    import validator from './actions/validator'
+  import validator from './actions/validator'
 
-    export default {
-        components: {
-            Alert,
-            Modal,
-            Choose,
-            Switch,
-        //    Progressbar,
-            Dropdown
+  export default {
+    components: {
+      Alert,
+      Modal,
+      Choose,
+      Switch,
+      //    Progressbar,
+      Dropdown
 
 
-        },
-        actions: {
-            validator
-        },
-        data() {
-            return {
-                name: '',
-                cities: [{
-                    value: 1,
-                    label: 'Karachi'
-                }, {
-                    value: 2,
-                    label: 'Hyderabad'
-                }]
-            }
-        },
+    },
+    actions: {
+      validator
+    },
+    data() {
+      return {
+        name: '',
+        cities: [{
+          value: 1,
+          label: 'Karachi'
+        }, {
+          value: 2,
+          label: 'Hyderabad'
+        }]
+      }
+    },
 
-        oncreate() {
-            
-//this.refs.pbar.start()
-        },
-        methods: {
-            check(event) {
-//console.log('Its Working')
-            },
-           ongender(event) {
-                console.log(event.target.value)
-            },
-            showAlert() {
-                this.refs.alert.show()
-            },
-            showModal() {
-                this.refs.modal.open()
-            },
-            onModalClose() {
-                console.log('Modal closed')
-            },
-            submit(event) {
-                event.preventDefault();
+    oncreate() {
 
-                this.isFormValid(this.refs.userForm).then(result => console.log(result))
-            }
-        }
+      //this.refs.pbar.start()
+    },
+    methods: {
+      check(event) {
+        //console.log('Its Working')
+      },
+      ongender(event) {
+        console.log(event.target.value)
+      },
+      showAlert() {
+        this.refs.alert.show()
+      },
+      showModal() {
+        this.refs.modal.open()
+      },
+      onModalClose() {
+        console.log('Modal closed')
+      },
+      submit(event) {
+        event.preventDefault();
+
+        this.isFormValid(this.refs.userForm).then(result => console.log(result))
+      }
     }
+  }
+
 </script>

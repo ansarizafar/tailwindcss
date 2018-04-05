@@ -1,20 +1,20 @@
-.field {
-    @apply .m-2
+form .field {
+    @apply m-2;
 }
-.field label {
-    @apply .py-3 .px-1 .text-grey-darker
+form .field label {
+    @apply py-3 px-1 text-grey-darker;
 }
-.input {
-    @apply .shadow .appearance-none .border .rounded .w-full .py-2 .px-3 .bg-white .text-grey-darker
+form .input {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 bg-white text-grey-darker;
 }
 
-.error {
-    @apply .text-red .text-sm .text-center .pt-1
+form .error {
+    @apply text-red text-xs italic mt-2 mb-4 pt-1;
 }
-select:invalid, input:invalid {
-     @apply .border .border-red-lighter .bg-red-lightest;
+form select:invalid, input:invalid {
+     @apply border border-red-lighter bg-red-lightest;
   }
   
- select:focus, input:focus, input:focus:invalid {
+ form select:focus, input:focus, input:focus:invalid {
     outline: none;
   }
