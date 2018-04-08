@@ -14,21 +14,19 @@
     <div class="absolute border border-grey-light bg-white rounded z-10 shadow w-64 pb-2">
 
       <div class="w-full text-center p-2 flex justify-between">
-        <button id="pre" on:click="changeMonth(event)" on:blur='close(event)' class="bg-transparent hover:bg-{{color}} pr-1 pl-1 pt-0 pb-0 rounded-full  hover:text-white">
-          <svg class="fill-current h-6 w-4" viewBox="0 0 12 32">
-            <path d="M11.196 10c0 0.143-0.071 0.304-0.179 0.411l-7.018 7.018 7.018 7.018c0.107 0.107 0.179 0.268 0.179 0.411s-0.071 0.304-0.179 0.411l-0.893 0.893c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-8.321-8.321c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l8.321-8.321c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l0.893 0.893c0.107 0.107 0.179 0.25 0.179 0.411z"></path>
-          </svg>
-        </button>
+
+        <svg id="pre" on:click="prevMonth(event)" on:blur='close(event)' class="fill-current h-6 w-6 bg-transparent hover:bg-{{color}} pr-1 pl-1 pt-0 pb-0 rounded-full  hover:text-white"
+          viewBox="0 0 12 32">
+          <path d="M11.196 10c0 0.143-0.071 0.304-0.179 0.411l-7.018 7.018 7.018 7.018c0.107 0.107 0.179 0.268 0.179 0.411s-0.071 0.304-0.179 0.411l-0.893 0.893c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-8.321-8.321c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l8.321-8.321c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l0.893 0.893c0.107 0.107 0.179 0.25 0.179 0.411z"></path>
+        </svg>
+
         <span class="pt-1">{{selectedMonth}} {{selectedYear}} </span>
 
-    <!--    <button id="next" on:click="changeMonth(event)" on:blur='close(event)' class="bg-transparent hover:bg-{{color}} pr-1 pl-1 pt-0 pb-0 rounded-full  hover:text-white">
-    -->  
-    <span class="bg-transparent hover:bg-{{color}} pr-2 pl-2 pt-0 pb-0 rounded-full  hover:text-white">
-    <svg id="next" on:click="changeMonth(event)" on:blur='close(event)' class="fill-current h-6 w-4" viewBox="0 0 11 32">
-            <path d="M10.625 17.429c0 0.143-0.071 0.304-0.179 0.411l-8.321 8.321c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-0.893-0.893c-0.107-0.107-0.179-0.25-0.179-0.411 0-0.143 0.071-0.304 0.179-0.411l7.018-7.018-7.018-7.018c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l0.893-0.893c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l8.321 8.321c0.107 0.107 0.179 0.268 0.179 0.411z"></path>
-          </svg>
-        </span>
-      <!--  </button> -->
+        <svg id="next" on:click="nextMonth(event)" on:blur='close(event)' class="fill-current h-6 w-6 bg-transparent hover:bg-{{color}} pr-1 pl-1 pt-0 pb-0 rounded-full  hover:text-white"
+          viewBox="0 0 11 32">
+          <path d="M10.625 17.429c0 0.143-0.071 0.304-0.179 0.411l-8.321 8.321c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-0.893-0.893c-0.107-0.107-0.179-0.25-0.179-0.411 0-0.143 0.071-0.304 0.179-0.411l7.018-7.018-7.018-7.018c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l0.893-0.893c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l8.321 8.321c0.107 0.107 0.179 0.268 0.179 0.411z"></path>
+        </svg>
+
       </div>
 
       <div class="flex justify-around pt-1 px-2 py-2 text-grey text-sm">
@@ -41,13 +39,11 @@
         <span>Sa</span>
       </div>
       <div class="flex justify-center flex-wrap">
-        {{#each days as day}}
-{{#if day != ''}}
+        {{#each days as day}} {{#if day != ''}}
         <button on:click="onSelect(event)" on:keypress="onSelect(event)" id="{{day}}" class="outline w-8 pt-1 pb-1 pr-4 pl-4 bg-white rounded-full border-grey-light hover:border-{{color}} hover:bg-{{color}} {{selectedDay === day ? 'bg-green text-white' : ''}} hover:text-white text-sm flex justify-center">{{day}}</button>
-{{else}}
-<div class=" w-8 pt-1 pb-1 pr-4 pl-4"></div>
-        {{/if}}
-        {{/each}}
+        {{else}}
+        <div class=" w-8 pt-1 pb-1 pr-4 pl-4"></div>
+        {{/if}} {{/each}}
       </div>
 
     </div>
@@ -88,18 +84,20 @@
     },
     oncreate() {
       this.observe('selectedDate', date => {
-      console.log(date)
         const daysInMonth = (new Date(date.getFullYear(), date.getMonth() + 1, 0)).getDate()
-
         this.set({
           selectedDay: date.getDate()
         })
         const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         let clanderDays = []
-        for (let i = 0; i <= 30; i++) {
-          clanderDays[i] = ''
-          if (i >= firstDay.getDay() && i < daysInMonth) {
+        let extra = 0
+        for (let i = 0; i <= 36; i++) {
+
+          if (i >= firstDay.getDay() && i < daysInMonth + extra) {
             clanderDays[i] = i - (firstDay.getDay() - 1)
+          } else {
+            clanderDays[i] = ''
+            extra++
           }
         }
 
@@ -114,21 +112,24 @@
     },
 
     methods: {
-      changeMonth(event) {
+      nextMonth(event) {
         event.preventDefault();
         let monthDate = null
         let selDate = this.get('selectedDate')
 
-        console.log(event)
-        if (event.target.id === 'next') {
-          monthDate = new Date(selDate.getFullYear(), selDate.getMonth() + 1, 1)
-        } else {
-          monthDate = new Date(selDate.getFullYear(), selDate.getMonth() -1, 1)
-        }
-        console.log(monthDate)
-        this.set({selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(),this.get('selectedDay'))})
-
-
+        monthDate = new Date(selDate.getFullYear(), selDate.getMonth() + 1, 1)
+        this.set({
+          selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), this.get('selectedDay'))
+        })
+      },
+      prevMonth() {
+        event.preventDefault();
+        let monthDate = null
+        let selDate = this.get('selectedDate')
+        monthDate = new Date(selDate.getFullYear(), selDate.getMonth() - 1, 1)
+        this.set({
+          selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), this.get('selectedDay'))
+        })
       },
       toggleOpen() {
         event.preventDefault();
@@ -160,7 +161,7 @@
             'selectedDay'))
         })
         this.fire('selected', this.get('selectedDate'))
-      
+
       }
     },
 
@@ -170,11 +171,9 @@
 
 <style>
   select:focus,
-  select:focus:invalid {
+  select:focus:invalid,
+  svg:focus {
     outline: none;
-  }
-  span:active {
-    outline: 0;
   }
 
 </style>
