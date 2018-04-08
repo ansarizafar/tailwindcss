@@ -134,22 +134,27 @@
   <form ref:userForm>
     <div class="field w-64">
       <label for="name">Name</label>
-      <input use:validator bind:value='name' name="name" data-rules="required|min:5" class="input" type="text" placeholder="Name">
+      <input use:validator bind:value='name' name="name" data-rules="required|min:5" class="blue" type="text" placeholder="Name">
       <div class="error"></div>
     </div>
     <div class="field w-64">
-      <select class="input" use:validator name="gender" data-rules="required">
+      <select class="" use:validator name="gender" data-rules="required">
         <option value="" disabled selected>Select your option</option>
         <option value='1'>Karachi</option>
         <option value='2'>Hyderabad</option>
       </select>
       <div class="error"></div>
     </div>
-    <button class="ui blue rounded small button shadow mb-6" type="submit" on:click='submit(event)'>Submit</button>
+  
+    <div class="field w-64">
+    <Datepicker color='green' class="w-64"></Datepicker>
+    </div>
+    <button class="block blue rounded small button  mt-4 mb-6" type="submit" on:click='submit(event)'>Submit</button>
   </form>
 
 
   <Dropdown items='{{cities}}'></Dropdown>
+  
 
   <table class="indigo">
     <thead class="indigo">
@@ -179,6 +184,7 @@
   import Switch from './components/Switch'
   import Progressbar from './components/Progressbar'
   import Dropdown from './components/Dropdown'
+  import Datepicker from './components/Datepicker'
 
 
   import validator from './actions/validator'
@@ -190,7 +196,8 @@
       Choose,
       Switch,
       //    Progressbar,
-      Dropdown
+      Dropdown,
+      Datepicker
 
 
     },

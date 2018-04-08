@@ -11,7 +11,7 @@
         </svg>
     </button>
     {{#if open }}
-    <div transition:fade>
+    <div transition:fade='{delay: 0, duration: 100}'>
         <div class="absolute border border-grey-light bg-white rounded z-10 min-w-full shadow">
             <ul class="list-reset">
                 {{#each items as item}}

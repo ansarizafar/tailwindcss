@@ -4,9 +4,22 @@ form .field {
 form .field label {
     @apply py-3 px-1 text-grey-darker;
 }
-form .input {
+form input, select {
     @apply shadow appearance-none border rounded w-full py-2 px-3 bg-white text-grey-darker;
 }
+
+form input:hover, select:hover {
+    @apply border-grey-dark;
+    }
+    
+
+form input.blue:hover, select.blue:hover {
+@apply border-blue;
+}
+
+form input.green:hover, select.green:hover {
+    @apply border-green;
+    }
 
 form .error {
     @apply text-red text-xs italic mt-2 mb-4 pt-1;

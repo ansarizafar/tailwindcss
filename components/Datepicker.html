@@ -1,0 +1,180 @@
+<div tabindex="0" class="relative inline-block cursor- w-full shadow">
+  <button on:click='toggleOpen(event)' on:blur='close(event)' class="appearance-none w-full pt-2 pb-2 pl-4 pr-4 rounded flex items-center justify-between bg-white border border-grey-light hover:bg-transparent hover:border-{{
+        color}}">
+    <span class="pr-2 text-grey-dark">
+      {{selectedDate ? selectedDate.toLocaleDateString() : placeholder}}
+    </span>
+
+    <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+    </svg>
+  </button>
+  {{#if open }}
+  <div transition:fade='{delay: 0, duration: 100}'>
+    <div class="absolute border border-grey-light bg-white rounded z-10 shadow w-64 pb-2">
+
+      <div class="w-full text-center p-2 flex justify-between">
+        <button id="pre" on:click="changeMonth(event)" on:blur='close(event)' class="bg-transparent hover:bg-{{color}} pr-1 pl-1 pt-0 pb-0 rounded-full  hover:text-white">
+          <svg class="fill-current h-6 w-4" viewBox="0 0 12 32">
+            <path d="M11.196 10c0 0.143-0.071 0.304-0.179 0.411l-7.018 7.018 7.018 7.018c0.107 0.107 0.179 0.268 0.179 0.411s-0.071 0.304-0.179 0.411l-0.893 0.893c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-8.321-8.321c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l8.321-8.321c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l0.893 0.893c0.107 0.107 0.179 0.25 0.179 0.411z"></path>
+          </svg>
+        </button>
+        <span class="pt-1">{{selectedMonth}} {{selectedYear}} </span>
+
+    <!--    <button id="next" on:click="changeMonth(event)" on:blur='close(event)' class="bg-transparent hover:bg-{{color}} pr-1 pl-1 pt-0 pb-0 rounded-full  hover:text-white">
+    -->  
+    <span class="bg-transparent hover:bg-{{color}} pr-2 pl-2 pt-0 pb-0 rounded-full  hover:text-white">
+    <svg id="next" on:click="changeMonth(event)" on:blur='close(event)' class="fill-current h-6 w-4" viewBox="0 0 11 32">
+            <path d="M10.625 17.429c0 0.143-0.071 0.304-0.179 0.411l-8.321 8.321c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-0.893-0.893c-0.107-0.107-0.179-0.25-0.179-0.411 0-0.143 0.071-0.304 0.179-0.411l7.018-7.018-7.018-7.018c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l0.893-0.893c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l8.321 8.321c0.107 0.107 0.179 0.268 0.179 0.411z"></path>
+          </svg>
+        </span>
+      <!--  </button> -->
+      </div>
+
+      <div class="flex justify-around pt-1 px-2 py-2 text-grey text-sm">
+        <span>Su</span>
+        <span>Mo</span>
+        <span>Tu</span>
+        <span>We</span>
+        <span>Th</span>
+        <span>Fr</span>
+        <span>Sa</span>
+      </div>
+      <div class="flex justify-center flex-wrap">
+        {{#each days as day}}
+{{#if day != ''}}
+        <button on:click="onSelect(event)" on:keypress="onSelect(event)" id="{{day}}" class="outline w-8 pt-1 pb-1 pr-4 pl-4 bg-white rounded-full border-grey-light hover:border-{{color}} hover:bg-{{color}} {{selectedDay === day ? 'bg-green text-white' : ''}} hover:text-white text-sm flex justify-center">{{day}}</button>
+{{else}}
+<div class=" w-8 pt-1 pb-1 pr-4 pl-4"></div>
+        {{/if}}
+        {{/each}}
+      </div>
+
+    </div>
+  </div>
+  {{/if}}
+</div>
+
+<script>
+  let days = [];
+  const currentDate = new Date();
+  const nextYear = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+  //const current = new Date(now.getFullYear(), now.getMonth()+1, 1);
+
+  import {
+    fade
+  } from 'svelte-transitions';
+  export default {
+    transitions: {
+      fade
+    },
+    data() {
+      return {
+        days: [],
+        selectedDate: new Date(),
+        selectedDay: 1,
+        placeholder: 'Select a date',
+        color: 'blue',
+        open: false,
+        //   selectedItem: null,
+        //   selectedValue: null
+      }
+    },
+    computed: {
+      selectedMonth: selectedDate => selectedDate.toLocaleString('en-us', {
+        month: 'long'
+      }),
+      selectedYear: selectedDate => selectedDate.getFullYear()
+    },
+    oncreate() {
+      this.observe('selectedDate', date => {
+      console.log(date)
+        const daysInMonth = (new Date(date.getFullYear(), date.getMonth() + 1, 0)).getDate()
+
+        this.set({
+          selectedDay: date.getDate()
+        })
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        let clanderDays = []
+        for (let i = 0; i <= 30; i++) {
+          clanderDays[i] = ''
+          if (i >= firstDay.getDay() && i < daysInMonth) {
+            clanderDays[i] = i - (firstDay.getDay() - 1)
+          }
+        }
+
+        this.set({
+          days: []
+        })
+        this.set({
+          days: clanderDays
+        })
+
+      })
+    },
+
+    methods: {
+      changeMonth(event) {
+        event.preventDefault();
+        let monthDate = null
+        let selDate = this.get('selectedDate')
+
+        console.log(event)
+        if (event.target.id === 'next') {
+          monthDate = new Date(selDate.getFullYear(), selDate.getMonth() + 1, 1)
+        } else {
+          monthDate = new Date(selDate.getFullYear(), selDate.getMonth() -1, 1)
+        }
+        console.log(monthDate)
+        this.set({selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(),this.get('selectedDay'))})
+
+
+      },
+      toggleOpen() {
+        event.preventDefault();
+        this.set({
+          open: !this.get("open")
+        });
+      },
+      close(event) {
+        event.preventDefault();
+
+        if (event.relatedTarget === null || event.relatedTarget.id != 'pre' && event.relatedTarget.id != 'next') {
+
+          this.set({
+            open: false
+          });
+        }
+      },
+      onSelect(event) {
+        event.preventDefault();
+        this.set({
+          open: false
+        });
+        this.set({
+          selectedDay: event.target.id
+        })
+
+        this.set({
+          selectedDate: new Date(this.get('selectedYear'), this.get('selectedDate').getMonth(), this.get(
+            'selectedDay'))
+        })
+        this.fire('selected', this.get('selectedDate'))
+      
+      }
+    },
+
+  }
+
+</script>
+
+<style>
+  select:focus,
+  select:focus:invalid {
+    outline: none;
+  }
+  span:active {
+    outline: 0;
+  }
+
+</style>
