@@ -1,8 +1,8 @@
-{{#if isVisible}}
-<div transition:fade='{delay: 0, duration: 100}' class="relative bg-{{color}}-lightest border-l-4 border-{{color}} text-{{color}}-dark p-4"
+{#if isVisible}
+<div transition:fade='{delay: 0, duration: 100}' class="relative bg-{color}-lightest border-l-4 border-{color} text-{color}-dark p-4"
   role="alert">
-  <p class="font-bold">{{title ? title : '' }}</p>
-  <p>{{message}}</p>
+  <p class="font-bold">{title ? title : '' }</p>
+  <p>{message}</p>
 
   <span class="absolute pin-t pin-r px-4 py-3">
     <svg on:click='hide()' class="fill-current h-6 w-6 text-{{color}}" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -13,12 +13,12 @@
   </span>
 
 </div>
-{{/if}}
+{/if}
 <script>
   import {
     fade
   } from 'svelte-transitions';
-  let timeOut = null
+ 
   export default {
     transitions: {
       fade
@@ -27,8 +27,8 @@
       //console.log(this.options.data.type)
     },
     ondestroy() {
-      if (timeOut) {
-        clearTimeout(timeOut);
+      if (this.timeOut) {
+        clearTimeout(this.timeOut);
       }
     },
     data() {
@@ -58,15 +58,15 @@
           isVisible: true
         })
         if (this.options.data.timeout) {
-          timeOut = setTimeout(() => this.hide(), this.options.data.timeout);
+          this.timeOut = setTimeout(() => this.hide(), this.options.data.timeout);
         }
       },
       hide() {
         this.set({
           isVisible: false
         })
-        if (timeOut) {
-        clearTimeout(timeOut);
+        if (this.timeOut) {
+        clearTimeout(this.timeOut);
       }
       }
     }

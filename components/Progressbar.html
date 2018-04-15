@@ -1,12 +1,12 @@
 
-{{#if width && widthPercent}}
-<div class="svelte-progress-bar {{barClass}}" style="width: {{widthPercent}}% !important; {{barColorStyle}}">
+{#if width && widthPercent}
+<div class="svelte-progress-bar {barClass}" style="width: {widthPercent}% !important; {barColorStyle}">
 	
-	{{#if running}}
-	<div class="svelte-progress-bar-leader" style="{{leaderColorStyle}}"></div>
-	{{/if}}
+	{#if running}
+	<div class="svelte-progress-bar-leader" style="{leaderColorStyle}"></div>
+	{/if}
 </div>
-{{/if}}
+{/if}
 
 <script>
 function getIncrement(number) {

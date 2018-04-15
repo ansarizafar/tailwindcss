@@ -1,6 +1,6 @@
 module.exports = {
     //entry: './src/index.js', 
       presets: [
-        require('poi-preset-svelte')({loaderOptions: {emitCss: true}})
+        require('poi-preset-svelte')({loaderOptions: {emitCss: true, parser: 'v2'}})
       ]
     }

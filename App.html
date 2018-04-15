@@ -1,6 +1,6 @@
-<:Head>
+<svelte:head>
   <title>Tailwindcss</title>
-</:Head>
+</svelte:head>
 
 <div class="container py-4 px-4 lg:px-0 md:px-0 mx-auto">
   <div class="ui center menu">
@@ -125,7 +125,7 @@
     <Switch type='radio' color="red" name='gender' value='Male' on:change='ongender(event)' checked='true'></Switch>
     <Switch type='radio' color="yellow" name='gender' value='Female' on:change='ongender(event)'></Switch>
 
-    <Choose width='w-64' selected="2" name="city" list='{{cities}}'>
+    <Choose width='w-64' selected="2" name="city" list='{cities}'>
 
     </Choose>
   </div>
@@ -147,13 +147,13 @@
     </div>
   
     <div class="field w-64">
-    <Datepicker color='green' format='full'  class="w-64"></Datepicker>
+    <Datepicker name="birthDate" bind:selectedDate color='green' format='full'  class="w-64"></Datepicker>
     </div>
     <button class="block blue rounded small button  mt-4 mb-6" type="submit" on:click='submit(event)'>Submit</button>
   </form>
 
 
-  <Dropdown items='{{cities}}'></Dropdown>
+  <Dropdown items='{cities}'></Dropdown>
   
 
   <table class="indigo">
@@ -207,6 +207,7 @@
     data() {
       return {
         name: '',
+       //selectedDate: new Date(),
         cities: [{
           value: 1,
           label: 'Karachi'
