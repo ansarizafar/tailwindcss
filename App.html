@@ -1,6 +1,7 @@
 <svelte:head>
   <title>Tailwindcss</title>
 </svelte:head>
+<h1>Svelte V2</h1>
 
 <div class="container py-4 px-4 lg:px-0 md:px-0 mx-auto">
   <div class="ui center menu">
@@ -75,7 +76,6 @@
   </div>
 
 
-  <!-- List -->
   <h1 class="text-2xl font-bold">List</h1>
   <div class="red divider"></div>
 
@@ -121,7 +121,7 @@
   </ul>
 
   <div class="flex justify-around flex-wrap">
-    <!-- Switch -->
+    
     <Switch type='radio' color="red" name='gender' value='Male' on:change='ongender(event)' checked='true'></Switch>
     <Switch type='radio' color="yellow" name='gender' value='Female' on:change='ongender(event)'></Switch>
 
@@ -147,13 +147,16 @@
     </div>
   
     <div class="field w-64">
-    <Datepicker name="birthDate" bind:selectedDate color='green' format='full'  class="w-64"></Datepicker>
+ 
+      <Datepicker name="birthDate" bind:selectedDate color='green' format='full'  class="w-64"></Datepicker>
+ 
     </div>
     <button class="block blue rounded small button  mt-4 mb-6" type="submit" on:click='submit(event)'>Submit</button>
   </form>
 
 
-  <Dropdown items='{cities}'></Dropdown>
+    <Dropdown items='{cities}'></Dropdown>
+
   
 
   <table class="indigo">
@@ -174,10 +177,12 @@
   </table>
 
 </div>
+
 <!--
 <Progressbar ref:pbar color="blue"></Progressbar>
 -->
 <script>
+
   import Alert from './components/Alert'
   import Modal from './components/Modal'
   import Choose from './components/Choose'
@@ -187,23 +192,25 @@
   import Datepicker from './components/Datepicker'
 
 
-  import validator from './actions/validator'
+import validator from './actions/validator'
 
   export default {
-    components: {
-      Alert,
+ 
+   components: {
+     Alert,
       Modal,
-      Choose,
+     Choose,
       Switch,
-      //    Progressbar,
-      Dropdown,
-      Datepicker
+ //     Progressbar,
+Dropdown,
+     Datepicker
 
 
     },
     actions: {
       validator
     },
+    
     data() {
       return {
         name: '',
@@ -222,6 +229,7 @@
 
       //this.refs.pbar.start()
     },
+    
     methods: {
       check(event) {
         //console.log('Its Working')
@@ -243,7 +251,7 @@
 
         this.isFormValid(this.refs.userForm).then(result => console.log(result))
       }
-    }
+    } 
   }
 
 </script>

@@ -97,7 +97,7 @@
       }
     },
     computed: {
-      selectedMonth: selectedDate => {
+      selectedMonth: ({selectedDate}) => {
         if (selectedDate) {
           return selectedDate.toLocaleString('en-us', {
             month: 'long'
@@ -110,7 +110,7 @@
         }
       },
       //  selectedMonthNo: selectedDate => selectedDate.getMonth(),
-      selectedYear: selectedDate => {
+      selectedYear: ({selectedDate}) => {
         if (selectedDate) {
           return selectedDate.getFullYear()
         } else {
@@ -119,10 +119,11 @@
         }
       }
     },
-    oncreate() {
-      this.set({color: 'red'})
-      this.observe('selectedDate', date => {
-        if(!date) {
+
+ onstate({ changed, current }) {
+  if(changed.selectedDate) {
+    let date = current.selectedDate   
+    if(!date) {
           date = new Date()
         }
             const daysInMonth = (new Date(date.getFullYear(), date.getMonth() + 1, 0)).getDate()
@@ -149,7 +150,12 @@
           days: clanderDays
         })
 
-      })
+      }
+ },
+
+    oncreate() {
+     // this.set({color: 'red'})
+     
     },
 
     methods: {
@@ -160,43 +166,43 @@
       },
       next(event) {
         event.preventDefault();
-        if (this.get('monthCard')) {
+        if (this.get().monthCard) {
           this.set({
-            selectedDate: new Date(this.get('selectedYear') + 1, this.get('selectedDate').getMonth(), this.get(
-              'selectedDay'))
+            selectedDate: new Date(this.get('selectedYear') + 1, this.get().selectedDate.getMonth(), this.get(
+          ).selectedDay)
           })
 
         } else {
           let monthDate = null
-          let selDate = this.get('selectedDate') || new Date()
+          let selDate = this.get().selectedDate || new Date()
 
           monthDate = new Date(selDate.getFullYear(), selDate.getMonth() + 1, 1)
           this.set({
-            selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), this.get('selectedDay'))
+            selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), this.get().selectedDay)
           })
         }
       },
       prev() {
         event.preventDefault();
-        if (this.get('monthCard')) {
+        if (this.get().monthCard) {
           this.set({
-            selectedDate: new Date(this.get('selectedYear') - 1, this.get('selectedDate').getMonth(), this.get(
-              'selectedDay'))
+            selectedDate: new Date(this.get().selectedYear - 1, this.get().selectedDate.getMonth(), this.get().
+              selectedDay)
           })
 
         } else {
           let monthDate = null
-          let selDate = this.get('selectedDate')
+          let selDate = this.get().selectedDate
           monthDate = new Date(selDate.getFullYear(), selDate.getMonth() - 1, 1)
           this.set({
-            selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), this.get('selectedDay'))
+            selectedDate: new Date(monthDate.getFullYear(), monthDate.getMonth(), this.get().selectedDay)
           })
         }
       },
       toggleOpen() {
         event.preventDefault();
         this.set({
-          open: !this.get("open")
+          open: !this.get().open
         });
         this.set({
           monthCard: false
@@ -222,8 +228,8 @@
             monthCard: false
           });
           this.set({
-            selectedDate: new Date(this.get('selectedYear'), this.get('months').indexOf(event.target.id), this.get(
-              'selectedDay'))
+            selectedDate: new Date(this.get().selectedYear, this.get().months.indexOf(event.target.id), this.get().
+              selectedDay)
           })
 
 
@@ -236,12 +242,12 @@
           })
 
           this.set({
-            selectedDate: new Date(this.get('selectedYear'), this.get('months').indexOf(this.get('selectedMonth').substring(0,3)), this.get(
-              'selectedDay'))
+            selectedDate: new Date(this.get().selectedYear, this.get().months.indexOf(this.get().selectedMonth.substring(0,3)), this.get().
+              selectedDay)
           })
          
         }
-        this.fire('selected', this.get('selectedDate'))
+        this.fire('selected', this.get().selectedDate)
       }
     },
 
@@ -250,10 +256,8 @@
 </script>
 
 <style>
-  select:focus,
-  select:focus:invalid,
-  svg:focus {
+input:focus, input:focus, svg:focus, svg:active {
     outline: none;
   }
-
+ 
 </style>

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "poi",
     "init": "./node_modules/.bin/tailwind init",
     "process": "./node_modules/.bin/tailwind build tailwind.css -c ./tailwind.js -o ./devstyles.css",
     "optimize": "node uncss.js"
@@ -11,9 +12,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@poi/plugin-svelte": "^11.0.0",
     "autoprefixer": "^8.2.0",
     "clean-css": "^4.1.11",
-    "poi-preset-svelte": "^9.0.1",
+    "poi": "^10.1.5",
     "postcss-import": "^11.1.0",
     "tailwindcss": "^0.5.1",
     "uncss": "^0.16.2"

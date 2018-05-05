@@ -3,7 +3,7 @@ const fs = require('fs');
 const CleanCSS = require('clean-css');
 
 
-const files = ['http://localhost:3000/']
+const files = ['http://orgofarms.surge.sh']
 
 uncss(files, {}, function (error, output) {
     

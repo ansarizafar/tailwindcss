@@ -1,5 +1,5 @@
 
-<div  tabindex="0" class="relative inline-block cursor-pointer w-64 shadow	"  >
+<div  tabindex="0" class="relative inline-block cursor-pointer w-64 shadow">
     <button on:click='toggleOpen(event)' on:blur='close(event)' class="w-full appearance-none pt-2 pb-2 pl-4 pr-4 rounded flex items-center justify-between bg-white border border-grey-light hover:bg-transparent hover:border-{
         color}">
         <span class="pr-2 text-grey-dark">
@@ -14,7 +14,7 @@
     <div transition:fade='{delay: 0, duration: 100}'>
         <div class="absolute border border-grey-light bg-white rounded z-10 min-w-full shadow">
             <ul class="list-reset">
-                {#each items as item}
+                {#each items as item }
                 <span>
                               <li on:click="onSelect(event)" id="{item.value}" class="p-3 text-grey-dark hover:bg-{color}-light hover:text-white">
                         <span class="no-underline text-md ">
@@ -37,12 +37,12 @@
 <script>
       import { fade } from 'svelte-transitions';
     export default {
-        transitions: { fade },
+       transitions: { fade },
         data() {
             return {
                 items: [],
                 placeholder: 'Select option',
-                color: 'blue',
+                color: 'green',
                 open: false,
                 selectedItem: null,
                 selectedValue: null
@@ -51,7 +51,8 @@
         methods: {
     toggleOpen() {
         event.preventDefault();
-      this.set({open :!this.get("open")});
+        
+      this.set({open :!this.get().open});
     },
     close(event) {
              this.set({open: false});
@@ -68,7 +69,10 @@
 </script>
 
 <style>
-select:focus, select:focus:invalid {
+button:active, button:focus, div:active, div:focus {
+    outline: none;
+}
+svg:focus {
     outline: none;
   }
 </style>
