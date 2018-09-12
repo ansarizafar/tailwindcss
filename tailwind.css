@@ -37,6 +37,7 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+ 
 @import "components/button.css";
 @import "components/divider.css";
 @import "components/list.css";
@@ -45,6 +46,7 @@
 @import "components/form.css";
 @import "components/tooltip.css";
 @import "components/table.css";
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

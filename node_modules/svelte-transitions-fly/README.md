@@ -1,6 +1,6 @@
 # svelte-transitions-fly
 
-Fly transition plugin for [Svelte](https://svelte.technology). [Demo](https://svelte.technology/repl?gist=939fba2cf67f914ee3c87ffb16f5257f)
+Fly transition plugin for [Svelte](https://svelte.technology). [Demo](https://svelte.technology/repl?version=2.5.0&gist=07f809dba875d3c4f85ecd47a044ec3e)
 
 ![fly-hello](https://cloud.githubusercontent.com/assets/1162160/25782007/fe173098-330f-11e7-9071-68d464ca72f0.gif)
 
@@ -21,10 +21,10 @@ Then add the plugin to your Svelte component's exported definition:
   <input type='checkbox' bind:checked='visible'> visible
 </label>
 
-{{#if visible}}
+{#if visible}
   <!-- use `in`, `out`, or `transition` (bidirectional) -->
   <div transition:fly='{y:-20}'>hello!</div>
-{{/if}}
+{/if}
 
 <script>
   import fly from 'svelte-transitions-fly';
